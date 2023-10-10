@@ -1,0 +1,33 @@
+.title {
+    -fx-font-size: 32px;
+}
+
+.label {
+    -fx-font-size: 16px;
+}
+
+.input-text {
+    -fx-pref-width: -fx-max-content;
+    -fx-pref-height: 16px;
+    -fx-border-width: 0;
+    -fx-box-shadow: 0 1px 1px #ccc;
+}
+
+.checkbox {
+    -fx-pref-width: 16px;
+    -fx-pref-height: 16px;
+    -fx-border-width: 0;
+    -fx-box-shadow: 0 1px 1px #ccc;
+}
+
+.radius {
+    -fx-pref-width: 16px;
+    -fx-pref-height: 16px;
+    -fx-border-width: 0;
+    -fx-box-shadow: 0 1px 1px #ccc;
+    -fx-border-radius: 100%;
+}
+
+.image-bottom {
+    -fx-pref-height: 250px;
+}
