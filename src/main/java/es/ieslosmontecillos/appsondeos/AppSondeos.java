@@ -17,10 +17,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class AppSondeos extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws FileNotFoundException {
 
         //Instanciar clases
         Home home = new Home();
@@ -56,6 +58,8 @@ public class AppSondeos extends Application {
         
         primaryStage.setTitle("AppSondeos");
         primaryStage.setScene(scene);
+        //impide ajustar la ventana al tamaño que queramos
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
