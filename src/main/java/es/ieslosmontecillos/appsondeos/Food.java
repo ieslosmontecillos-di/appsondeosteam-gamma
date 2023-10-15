@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Food extends VBox {
 
@@ -38,6 +39,7 @@ public class Food extends VBox {
     CheckBox cbThirdQueTP;
     CheckBox cbThirdQue100M;
     TextField tfThirdQueOther;
+    ArrayList<CheckBox> alThirdQue = new ArrayList<CheckBox>();
 
     //Forth Question
     Label lbForthQue;
@@ -46,6 +48,7 @@ public class Food extends VBox {
     CheckBox cbForthQueLunch;
     CheckBox cbForthQueSnack;
     CheckBox cbForthQueDinner;
+    ArrayList<CheckBox> alForthQue = new ArrayList<CheckBox>();
 
     //Fifth Question
     Label lbFifthQue;
@@ -63,6 +66,9 @@ public class Food extends VBox {
         super();
         //Root vbox properties
         this.setSpacing(10);
+
+        //Making CSVManager object
+        CSVManager csvm = new CSVManager();
 
         //Title
         foodTitle = new Text("Comidas");
@@ -92,6 +98,12 @@ public class Food extends VBox {
         cbThirdQueTP = new CheckBox("TelePizza");
         cbThirdQue100M = new CheckBox("100 Montaditos");
         tfThirdQueOther = new TextField();
+        //Adding checkboxes to an arraylist
+        alThirdQue.add(cbThirdQueMD);
+        alThirdQue.add(cbThirdQueBK);
+        alThirdQue.add(cbThirdQueGo);
+        alThirdQue.add(cbThirdQueTP);
+        alThirdQue.add(cbThirdQue100M);
 
         //Forth Question elements
         lbForthQue = new Label("¿En que horarios consumes comida para llevar?");
@@ -99,6 +111,11 @@ public class Food extends VBox {
         cbForthQueLunch = new CheckBox("Almuerzo");
         cbForthQueSnack = new CheckBox("Merienda");
         cbForthQueDinner = new CheckBox("Cena");
+        //Adding checkboxes to an arraylist
+        alForthQue.add(cbForthQueBreakfast);
+        alForthQue.add(cbForthQueLunch);
+        alForthQue.add(cbForthQueSnack);
+        alForthQue.add(cbForthQueDinner);
 
 
         //Fifth Question elements
@@ -143,7 +160,23 @@ public class Food extends VBox {
             hbFifthQue.getChildren().addAll(rbFifthQueYes, rbFifthQueNo);
         this.getChildren().addAll(lbFifthQue, hbFifthQue);
 
+        //Provisional Button to make the CSV
+        Button btnCheckNmake = new Button("Enviar");
+        this.getChildren().add(btnCheckNmake);
+
         this.getChildren().add(imgViewLogo);
+
+
+        //Try to make the CSV
+        btnCheckNmake.setOnAction(e -> {
+            if (csvm.CheckFoodData(tgFirstQue, tgSecondQue, alThirdQue, tfThirdQueOther, alForthQue, tgFifthQue))
+                csvm.CsvMaker("Food");
+            else
+                System.out.println("Debe rellenar los campos vacios.");
+        });
+
+
+
     }
 
 }
