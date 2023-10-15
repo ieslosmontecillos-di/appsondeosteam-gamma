@@ -3,7 +3,6 @@ package es.ieslosmontecillos.appsondeos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -75,8 +74,6 @@ public class Sport extends VBox {
         super();
 
         this.setSpacing(10);
-
-        CSVManager csvManager = new CSVManager();
 
         titleLabel = new Text("Encuesta Deporte");
         titleLabel.setId("title-text");
