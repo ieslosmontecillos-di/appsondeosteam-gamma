@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
+import java.util.Objects;
 
 public class AppSondeos extends Application {
     
@@ -53,6 +54,7 @@ public class AppSondeos extends Application {
         
         primaryStage.setTitle("AppSondeos");
         primaryStage.setScene(scene);
+        scene.getStylesheets().add(Objects.requireNonNull(AppSondeos.class.getResource("/assets/styles/main.css")).toExternalForm());
         primaryStage.show();
     }
 
