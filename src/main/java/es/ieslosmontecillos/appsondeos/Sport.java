@@ -153,7 +153,7 @@ public class Sport extends VBox {
 
         Button submitButton = new Button("Enviar");
 
-        imgInput = new FileInputStream("src\\assets\\images\\sport.png");
+        imgInput = new FileInputStream("src/main/resources/assets/images/sport.png");
         imgLogo = new Image(imgInput);
         imgViewLogo = new ImageView(imgLogo);
         imgViewLogo.setFitHeight(250);

@@ -72,7 +72,7 @@ public class Food extends VBox {
 
         //Title
         foodTitle = new Text("Comidas");
-        foodTitle.setId("food-title-text");
+        foodTitle.setId("title");
 
         //First Question elements
         lbFirstQue = new Label("¿Considera usted que es importante cuidar su alimentación?");
@@ -128,14 +128,16 @@ public class Food extends VBox {
 
 
         //Image
-        imginput = new FileInputStream("src\\assets\\images\\food.jpg");
+        imginput = new FileInputStream("src/main/resources/assets/images/food.jpg");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
-        this.getChildren().add(foodTitle);
+
 
 
         //Adding elements to root
-            hbFirstQue = new HBox(10);
+        this.getChildren().add(foodTitle);
+
+        hbFirstQue = new HBox(10);
             hbFirstQue.getChildren().addAll(rbFirstQueYes, rbFirstQueNo);
         this.getChildren().addAll(lbFirstQue, hbFirstQue);
 

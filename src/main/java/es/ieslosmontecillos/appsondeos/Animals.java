@@ -43,7 +43,6 @@ public class Animals extends VBox {
 
     //Forth Question
     Label lbForthQue;
-    HBox hbForthQue;
     CheckBox cbForthQueUm;
     CheckBox cbForthQueUa;
     CheckBox cbForthQueN;
@@ -140,7 +139,7 @@ public class Animals extends VBox {
 
         //Image
         //imginput = new FileInputStream("src\\assets\\images\\animals.png");
-        imginput = new FileInputStream("src/assets/images/animals.png");
+        imginput = new FileInputStream("src/main/resources/assets/images/animals.png");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
 

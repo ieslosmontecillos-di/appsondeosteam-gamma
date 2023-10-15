@@ -1,25 +1,18 @@
 package es.ieslosmontecillos.appsondeos;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Objects;
 
 public class Home extends VBox {
 
@@ -27,7 +20,7 @@ public class Home extends VBox {
     Label lblTitle = new Label("Inicio");
     Button btnAbout = new Button("Creditos");
 
-    FileInputStream imginput = new FileInputStream("src/assets/images/gamma.jpg");
+    FileInputStream imginput = new FileInputStream("src/main/resources/assets/images/gamma.jpg");
     Image imglogo = new Image(imginput);
     ImageView imgViewLogo = new ImageView(imglogo);
 
