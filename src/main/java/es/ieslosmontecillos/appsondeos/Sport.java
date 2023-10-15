@@ -17,8 +17,10 @@ public class Sport extends VBox {
 
     // Personal Info
     VBox personalInfoVBox;
+    HBox nameHBox;
     Label nameLabel;
     TextField nameTextField;
+    HBox ageHBox;
     Label ageLabel;
     TextField ageTextField;
     Label dniLabel;
@@ -81,13 +83,19 @@ public class Sport extends VBox {
         // Personal Info
         personalInfoVBox = new VBox(10);
 
+        nameHBox = new HBox(10);
         nameLabel = new Label("Nombre:");
         nameTextField = new TextField();
+        nameHBox.getChildren().addAll(nameLabel, nameTextField);
+
+        ageHBox = new HBox(10);
         ageLabel = new Label("Edad:");
         ageTextField = new TextField();
         dniLabel = new Label("DNI/NIF:");
         dniTextField = new TextField();
-        personalInfoVBox.getChildren().addAll(nameLabel, nameTextField, ageLabel, ageTextField, dniLabel, dniTextField);
+        ageHBox.getChildren().addAll(ageLabel, ageTextField, dniLabel, dniTextField);
+
+        personalInfoVBox.getChildren().addAll(nameHBox, ageHBox);
 
         // Gender
         genderHBox = new HBox(10);
@@ -153,9 +161,8 @@ public class Sport extends VBox {
 
         this.getChildren().addAll(titleLabel, personalInfoVBox, genderHBox, separator1, doYouExerciseLabel, exerciseOptionsHBox, sportVBox, daysPerWeekVBox, hoursPerDayVBox, submitButton, imgViewLogo);
 
-
         submitButton.setOnAction(e -> {
-            // ERROR AQUI
+            // Coloca aquí el código que deseas ejecutar al hacer clic en el botón "Enviar".
         });
     }
 }
