@@ -145,6 +145,8 @@ public class Animals extends VBox {
         imgViewLogo = new ImageView(imglogo);
 
         //Adding elements to root
+        this.getChildren().addAll(AnimalsTitle);
+
         hbFirstQue = new HBox(10);
         hbFirstQue.getChildren().addAll(rbFirstQueYes, rbFirstQueNo);
         this.getChildren().addAll(lbFirstQue, hbFirstQue);
