@@ -39,7 +39,7 @@ public class Food extends VBox {
     CheckBox cbThirdQueTP;
     CheckBox cbThirdQue100M;
     TextField tfThirdQueOther;
-    ArrayList<CheckBox> alThirdQue = new ArrayList<CheckBox>();
+    ArrayList<CheckBox> alThirdQue = new ArrayList<>();
 
     //Forth Question
     Label lbForthQue;
@@ -48,7 +48,7 @@ public class Food extends VBox {
     CheckBox cbForthQueLunch;
     CheckBox cbForthQueSnack;
     CheckBox cbForthQueDinner;
-    ArrayList<CheckBox> alForthQue = new ArrayList<CheckBox>();
+    ArrayList<CheckBox> alForthQue = new ArrayList<>();
 
     //Fifth Question
     Label lbFifthQue;

@@ -39,7 +39,7 @@ public class Animals extends VBox {
     CheckBox cbThirdQueAd;
     CheckBox cbThirdQueCo;
     CheckBox cbThirdQueRe;
-    ArrayList<CheckBox> alThirdQue = new ArrayList<CheckBox>();
+    ArrayList<CheckBox> alThirdQue = new ArrayList<>();
 
     //Forth Question
     Label lbForthQue;
@@ -49,7 +49,7 @@ public class Animals extends VBox {
     CheckBox cbForthQueDa;
     CheckBox cbForthQueE;
     TextField tfForthQueOther;
-    ArrayList<CheckBox> alForthQue = new ArrayList<CheckBox>();
+    ArrayList<CheckBox> alForthQue = new ArrayList<>();
 
     //Fifth Question
     Label lbFifthQue;
@@ -58,7 +58,7 @@ public class Animals extends VBox {
     CheckBox chFifthQueHo;
     CheckBox chFifthQueLi;
     TextField tfFifthQueOther;
-    ArrayList<CheckBox> alFifthhQue = new ArrayList<CheckBox>();
+    ArrayList<CheckBox> alFifthhQue = new ArrayList<>();
 
     //Image
     FileInputStream imginput;
@@ -138,7 +138,6 @@ public class Animals extends VBox {
         alFifthhQue.add(chFifthQueLi);
 
         //Image
-        //imginput = new FileInputStream("src\\assets\\images\\animals.png");
         imginput = new FileInputStream("src/main/resources/assets/images/animals.png");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
