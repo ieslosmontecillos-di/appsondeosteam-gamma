@@ -46,6 +46,7 @@ public class CSVManager {
         return dataIsCorrect;
     }
 
+    //Animals check Method
     boolean CheckAnimalsData (ToggleGroup tgFirstQue, ToggleGroup tgSecondQue, ArrayList<CheckBox> alThirdQue, ArrayList<CheckBox> alForthQue, TextField tfForthQueOther, ArrayList<CheckBox> alFifthhQue,  TextField tfFifthQueOther)
     {
         boolean dataIsCorrect = true;
@@ -69,6 +70,29 @@ public class CSVManager {
         return dataIsCorrect;
     }
 
+    //Reading check Method
+    boolean CheckReadingData(ToggleGroup tgFirstQue, ToggleGroup tgSecondQue, ArrayList<CheckBox> alThirdQue, ToggleGroup tgFourthQue, ToggleGroup tgFifthQues)
+    {
+        boolean dataIsCorrect = true;
+
+
+        //Check if obligatory field are filled
+        if (tgFirstQue.getSelectedToggle() == null ||
+                tgSecondQue.getSelectedToggle() == null ||
+                tgFourthQue.getSelectedToggle() == null||
+                tgFifthQues.getSelectedToggle() == null) {
+            dataIsCorrect = false;
+        } else {
+            //Make the data into it's attribute
+            this.data = ((RadioButton)tgFirstQue.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)tgSecondQue.getSelectedToggle()).getText()  + ";"
+                    + arrayToString(alThirdQue) + ";"
+                    + ((RadioButton)tgFourthQue.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)tgFifthQues.getSelectedToggle()).getText();
+        }
+
+        return dataIsCorrect;
+    }
 
     //Convert an ArrayList<Checkbox> ino a String
     String arrayToString (ArrayList<CheckBox> arrayList){

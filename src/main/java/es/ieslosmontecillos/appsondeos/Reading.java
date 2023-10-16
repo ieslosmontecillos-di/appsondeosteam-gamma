@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Reading extends VBox{
 
@@ -41,6 +42,7 @@ public class Reading extends VBox{
     CheckBox cb3ThirQues;
     CheckBox cb4ThirQues;
     CheckBox cb5ThirQues;
+    ArrayList<CheckBox> alThirdQue = new ArrayList<>();
 
     //CUARTA PREGUNTA
     Label lbFourthQue;
@@ -53,8 +55,6 @@ public class Reading extends VBox{
 
     //QUINTA PREGUNTA
     Label lbFifthQues;
-    Label lbFifthQues2;
-    TextField tfFifthQues;
     HBox hbFifthQues;
     RadioButton rbFifthQuesYes;
     RadioButton rbFifthQuesNo;
@@ -68,6 +68,8 @@ public class Reading extends VBox{
     public Reading() throws FileNotFoundException {
         super();
         this.setSpacing(10);
+
+        CSVManager csvm = new CSVManager();
 
         //TITULO
         readingTittle = new Text("Lecturas");
@@ -92,7 +94,7 @@ public class Reading extends VBox{
         this.getChildren().addAll(readingTittle,lbFirstQue, hbFirstQue);
 
         //SEGUNDA PREGUNTA
-        lbSecondQue = new Label("¿Cuanto tiempo le dedica ha la lectura?");
+        lbSecondQue = new Label("¿Cuanto tiempo le dedica a la lectura?");
 
         gpSecondQue = new GridPane();
 
@@ -125,6 +127,12 @@ public class Reading extends VBox{
         cb3ThirQues = new CheckBox("Aventura");
         cb4ThirQues = new CheckBox("Terror");
         cb5ThirQues = new CheckBox("Otro");
+
+        alThirdQue.add(cb1ThirQues);
+        alThirdQue.add(cb2ThirQues);
+        alThirdQue.add(cb3ThirQues);
+        alThirdQue.add(cb4ThirQues);
+        alThirdQue.add(cb5ThirQues);
 
         hbThirQues.getChildren().addAll(cb1ThirQues,cb2ThirQues,cb3ThirQues,cb4ThirQues,cb5ThirQues);
 
@@ -168,14 +176,10 @@ public class Reading extends VBox{
         rbFifthQuesYes.setToggleGroup(tgFifthQues);
         rbFifthQuesNo.setToggleGroup(tgFifthQues);
 
-        lbFifthQues2 = new Label("Si la respuesta anterior fue SI escriba aqui su libro");
-
-        tfFifthQues = new TextField();
-        tfFifthQues.setMaxWidth(150);
 
         hbFifthQues.getChildren().addAll(rbFifthQuesYes, rbFifthQuesNo);
 
-        this.getChildren().addAll(lbFifthQues, hbFifthQues,lbFifthQues2,tfFifthQues);
+        this.getChildren().addAll(lbFifthQues, hbFifthQues);
 
         //Provisional Button to make the CSV
         Button btnCheckNmake = new Button("Enviar");
@@ -185,6 +189,13 @@ public class Reading extends VBox{
         imginput = new FileInputStream("src/main/resources/assets/images/books.jpg");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
+
+        btnCheckNmake.setOnAction(e -> {
+            if (csvm.CheckReadingData(tgFirstQue, tgSecondQue, alThirdQue, tgFourthQue, tgFifthQues))
+                csvm.CsvMaker("Reading");
+            else
+                System.out.println("Debe rellenar los campos vacios.");
+        });
 
         this.getChildren().add(imgViewLogo);
 
