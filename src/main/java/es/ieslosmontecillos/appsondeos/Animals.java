@@ -175,6 +175,16 @@ public class Animals extends VBox {
         this.getChildren().add(btnCheckNmake);
 
         this.getChildren().add(imgViewLogo);
+
+
+        //Try to make the CSV
+        btnCheckNmake.setOnAction(e -> {
+            if (csvm.CheckAnimalsData(tgFirstQue, tgSecondQue, alThirdQue, alForthQue, tfForthQueOther, alFifthhQue, tfFifthQueOther))
+                csvm.CsvMaker("Animals");
+            else
+                System.out.println("Debe rellenar los campos vacios.");
+        });
+
     }
 
 }

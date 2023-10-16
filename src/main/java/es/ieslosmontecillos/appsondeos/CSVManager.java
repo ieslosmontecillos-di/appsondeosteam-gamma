@@ -46,7 +46,28 @@ public class CSVManager {
         return dataIsCorrect;
     }
 
+    boolean CheckAnimalsData (ToggleGroup tgFirstQue, ToggleGroup tgSecondQue, ArrayList<CheckBox> alThirdQue, ArrayList<CheckBox> alForthQue, TextField tfForthQueOther, ArrayList<CheckBox> alFifthhQue,  TextField tfFifthQueOther)
+    {
+        boolean dataIsCorrect = true;
 
+        //Check if the text field is null
+        String tfForth = (tfForthQueOther.getText().isEmpty()) ? "" : "["+tfForthQueOther.getText()+"]";
+        String tfFifth = (tfFifthQueOther.getText().isEmpty()) ? "" : "["+tfFifthQueOther.getText()+"]";
+
+        //Check if obligatory field are filled
+        if (tgFirstQue.getSelectedToggle() == null ||
+                tgSecondQue.getSelectedToggle() == null) {
+            dataIsCorrect = false;
+        } else {
+            //Make the data into it's attribute
+            this.data = ((RadioButton)tgFirstQue.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)tgSecondQue.getSelectedToggle()).getText()  + ";"
+                    + arrayToString(alThirdQue) + ";" + arrayToString(alForthQue) + tfForth + ";"
+                    + arrayToString(alFifthhQue) + tfFifth;
+        }
+
+        return dataIsCorrect;
+    }
 
 
     //Convert an ArrayList<Checkbox> ino a String

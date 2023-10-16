@@ -24,9 +24,9 @@ public class Home extends VBox {
     Image imglogo = new Image(imginput);
     ImageView imgViewLogo = new ImageView(imglogo);
 
-    Label lblSepu = new Label("Salvador");
-    Label lblThiago = new Label("Thiago");
-    Label lblAdrian = new Label("Adrian");
+    Label lblSepu = new Label("Salvador Sepúlveda Millán");
+    Label lblThiago = new Label("Thiago Vignolo Ferreira");
+    Label lblAdrian = new Label("Adrian Gonzalez García");
     Label lblMiguel = new Label("Miguel Gil Nebro");
 
     public Home() throws FileNotFoundException {
