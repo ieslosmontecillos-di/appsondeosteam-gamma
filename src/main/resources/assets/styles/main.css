@@ -6,6 +6,6 @@
     -fx-font-size: 35px;
 }
 
-#submit {
-
+#tabPane {
+    -fx-background-color: #FFFFFF;
 }
