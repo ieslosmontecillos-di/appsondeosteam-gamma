@@ -161,6 +161,7 @@ public class Sport extends VBox {
         HBox.setHgrow(otherHoursTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         Button submitButton = new Button("Enviar");
+        submitButton.setStyle("-fx-background-color: #25FB54;");
 
         HBox imageContainer = new HBox();
         imageContainer.setAlignment(Pos.CENTER);

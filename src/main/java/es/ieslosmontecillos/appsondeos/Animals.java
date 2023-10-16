@@ -174,6 +174,7 @@ public class Animals extends VBox {
 
         //Provisional Button to make the CSV
         Button btnCheckNmake = new Button("Enviar");
+        btnCheckNmake.setStyle("-fx-background-color: #25FB54;");
         this.getChildren().add(btnCheckNmake);
 
         this.getChildren().add(imgViewLogo);
