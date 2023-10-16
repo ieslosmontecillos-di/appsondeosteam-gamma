@@ -76,7 +76,7 @@ public class Animals extends VBox {
 
         //Title
         AnimalsTitle = new Text("Animales");
-        AnimalsTitle.setId("title");
+        AnimalsTitle.setId("title-text");
 
         //First Question elements
         lbFirstQue = new Label("¿Tienes alguna mascota?");
@@ -141,6 +141,8 @@ public class Animals extends VBox {
         imginput = new FileInputStream("src/main/resources/assets/images/animals.png");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
+        imgViewLogo.setFitHeight(340);
+        imgViewLogo.setFitWidth(430);
 
         //Adding elements to root
         this.getChildren().addAll(AnimalsTitle);

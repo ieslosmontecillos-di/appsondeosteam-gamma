@@ -33,6 +33,7 @@ public class Home extends VBox {
         super();
         //Set aligment
         this.setAlignment(Pos.TOP_CENTER);
+        lblTitle.setId("title-text");
 
         //Add elements to layout (old, done with GridPane)
 

@@ -71,7 +71,7 @@ public class Reading extends VBox{
 
         //TITULO
         readingTittle = new Text("Lecturas");
-        readingTittle.setId("title");
+        readingTittle.setId("title-text");
 
         //PRIMERA PREGUNTA
 
@@ -185,6 +185,8 @@ public class Reading extends VBox{
         imginput = new FileInputStream("src/main/resources/assets/images/books.jpg");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
+        imgViewLogo.setFitHeight(340);
+        imgViewLogo.setFitWidth(430);
 
         this.getChildren().add(imgViewLogo);
 

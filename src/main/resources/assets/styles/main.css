@@ -1,30 +1,11 @@
-.title {
+.root {
+    -fx-background-color: #FFFFFF;
+}
+
+#title-text {
     -fx-font-size: 35px;
 }
 
-.label {
-    -fx-font-size: 16px;
-}
+#submit {
 
-.input-text {
-    -fx-pref-width: -fx-max-content;
-    -fx-pref-height: 16px;
-    -fx-border-width: 0;
-}
-
-.checkbox {
-    -fx-pref-width: 16px;
-    -fx-pref-height: 16px;
-    -fx-border-width: 0;
-}
-
-.radius {
-    -fx-pref-width: 16px;
-    -fx-pref-height: 16px;
-    -fx-border-width: 0;
-    -fx-border-radius: 100%;
-}
-
-.image-bottom {
-    -fx-pref-height: 250px;
 }

@@ -11,7 +11,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import javafx.geometry.Insets;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
@@ -49,8 +49,9 @@ public class AppSondeos extends Application {
 
 
         VBox vBox = new VBox(tabPane);
+        vBox.setPadding(new Insets(5));
 
-        Scene scene = new Scene(vBox, 400, 700);
+        Scene scene = new Scene(vBox, 450, 800);
         
         primaryStage.setTitle("AppSondeos");
         primaryStage.setScene(scene);

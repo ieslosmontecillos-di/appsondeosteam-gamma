@@ -1,9 +1,12 @@
 package es.ieslosmontecillos.appsondeos;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -77,7 +80,7 @@ public class Sport extends VBox {
 
         this.setSpacing(10);
 
-        titleLabel = new Text("Encuesta Deporte");
+        titleLabel = new Text("Deporte");
         titleLabel.setId("title-text");
 
         // Personal Info
@@ -87,6 +90,7 @@ public class Sport extends VBox {
         nameLabel = new Label("Nombre:");
         nameTextField = new TextField();
         nameHBox.getChildren().addAll(nameLabel, nameTextField);
+        HBox.setHgrow(nameTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         ageHBox = new HBox(10);
         ageLabel = new Label("Edad:");
@@ -94,6 +98,8 @@ public class Sport extends VBox {
         dniLabel = new Label("DNI/NIF:");
         dniTextField = new TextField();
         ageHBox.getChildren().addAll(ageLabel, ageTextField, dniLabel, dniTextField);
+        HBox.setHgrow(ageTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
+        HBox.setHgrow(dniTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         personalInfoVBox.getChildren().addAll(nameHBox, ageHBox);
 
@@ -126,6 +132,7 @@ public class Sport extends VBox {
         sportLabel = new Label("¿Qué deporte practicas?");
         sportTextField = new TextField();
         sportVBox.getChildren().addAll(sportLabel, sportTextField);
+        VBox.setVgrow(sportTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         // ¿Cuántos días a la semana lo practicas?
         daysPerWeekVBox = new VBox(10);
@@ -138,6 +145,7 @@ public class Sport extends VBox {
         otherDaysTextField = new TextField();
         daysPerWeekOptionsHBox.getChildren().addAll(oneDayRadioButton, twoDaysRadioButton, threeDaysRadioButton, noneRadioButton, otherDaysTextField);
         daysPerWeekVBox.getChildren().addAll(daysPerWeekLabel, daysPerWeekOptionsHBox);
+        HBox.setHgrow(otherDaysTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         // ¿Cuántas horas al día practicas deporte?
         hoursPerDayVBox = new VBox(10);
@@ -150,14 +158,20 @@ public class Sport extends VBox {
         otherHoursTextField = new TextField();
         hoursPerDayOptionsHBox.getChildren().addAll(oneHourRadioButton, twoHoursRadioButton, threeHoursRadioButton, noneHoursRadioButton, otherHoursTextField);
         hoursPerDayVBox.getChildren().addAll(hoursPerDayLabel, hoursPerDayOptionsHBox);
+        HBox.setHgrow(otherHoursTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         Button submitButton = new Button("Enviar");
+
+        HBox imageContainer = new HBox();
+        imageContainer.setAlignment(Pos.CENTER);
 
         imgInput = new FileInputStream("src/main/resources/assets/images/sport.png");
         imgLogo = new Image(imgInput);
         imgViewLogo = new ImageView(imgLogo);
-        imgViewLogo.setFitHeight(250);
+        imgViewLogo.setFitHeight(300);
         imgViewLogo.setPreserveRatio(true);
+
+        imageContainer.getChildren().add(imgViewLogo);
 
         this.getChildren().addAll(titleLabel, personalInfoVBox, genderHBox, separator1, doYouExerciseLabel, exerciseOptionsHBox, sportVBox, daysPerWeekVBox, hoursPerDayVBox, submitButton, imgViewLogo);
 

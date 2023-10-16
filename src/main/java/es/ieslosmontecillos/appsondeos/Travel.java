@@ -72,7 +72,7 @@ public class Travel extends VBox {
 
         //TITULO
         travelTittle = new Text("Viajes");
-        travelTittle.setId("title");
+        travelTittle.setId("title-text");
 
         //PRIMERA PREGUNTA
         lbFirstQue = new Label("¿Tiene usted pensado viajar proximamente?");
@@ -189,6 +189,8 @@ public class Travel extends VBox {
         imginput = new FileInputStream("src/main/resources/assets/images/travel.jpg");
         imglogo = new Image(imginput);
         imgViewLogo = new ImageView(imglogo);
+        imgViewLogo.setFitHeight(340);
+        imgViewLogo.setFitWidth(430);
 
         this.getChildren().add(imgViewLogo);
     }
