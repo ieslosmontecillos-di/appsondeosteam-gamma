@@ -1,6 +1,5 @@
 package es.ieslosmontecillos.appsondeos;
 
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -58,7 +57,6 @@ public class Sport extends VBox {
     RadioButton twoDaysRadioButton;
     RadioButton threeDaysRadioButton;
     RadioButton noneRadioButton;
-    TextField otherDaysTextField;
 
     // ¿Cuántas horas al día practicas deporte?
     VBox hoursPerDayVBox;
@@ -68,7 +66,6 @@ public class Sport extends VBox {
     RadioButton twoHoursRadioButton;
     RadioButton threeHoursRadioButton;
     RadioButton noneHoursRadioButton;
-    TextField otherHoursTextField;
 
     // Image
     FileInputStream imgInput;
@@ -79,6 +76,9 @@ public class Sport extends VBox {
         super();
 
         this.setSpacing(10);
+
+        //Making CSVManager object
+        CSVManager csvm = new CSVManager();
 
         titleLabel = new Text("Deporte");
         titleLabel.setId("title-text");
@@ -142,10 +142,13 @@ public class Sport extends VBox {
         twoDaysRadioButton = new RadioButton("2 días");
         threeDaysRadioButton = new RadioButton("3 días");
         noneRadioButton = new RadioButton("Ninguno");
-        otherDaysTextField = new TextField();
-        daysPerWeekOptionsHBox.getChildren().addAll(oneDayRadioButton, twoDaysRadioButton, threeDaysRadioButton, noneRadioButton, otherDaysTextField);
+        ToggleGroup daysPerWeekToggleGroup = new ToggleGroup();
+        oneDayRadioButton.setToggleGroup(daysPerWeekToggleGroup);
+        twoDaysRadioButton.setToggleGroup(daysPerWeekToggleGroup);
+        threeDaysRadioButton.setToggleGroup(daysPerWeekToggleGroup);
+        noneRadioButton.setToggleGroup(daysPerWeekToggleGroup);
+        daysPerWeekOptionsHBox.getChildren().addAll(oneDayRadioButton, twoDaysRadioButton, threeDaysRadioButton, noneRadioButton);
         daysPerWeekVBox.getChildren().addAll(daysPerWeekLabel, daysPerWeekOptionsHBox);
-        HBox.setHgrow(otherDaysTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         // ¿Cuántas horas al día practicas deporte?
         hoursPerDayVBox = new VBox(10);
@@ -155,10 +158,13 @@ public class Sport extends VBox {
         twoHoursRadioButton = new RadioButton("2 horas");
         threeHoursRadioButton = new RadioButton("3 horas");
         noneHoursRadioButton = new RadioButton("Ninguna");
-        otherHoursTextField = new TextField();
-        hoursPerDayOptionsHBox.getChildren().addAll(oneHourRadioButton, twoHoursRadioButton, threeHoursRadioButton, noneHoursRadioButton, otherHoursTextField);
+        ToggleGroup hoursPerDayToggleGroup = new ToggleGroup();
+        oneHourRadioButton.setToggleGroup(hoursPerDayToggleGroup);
+        twoHoursRadioButton.setToggleGroup(hoursPerDayToggleGroup);
+        threeHoursRadioButton.setToggleGroup(hoursPerDayToggleGroup);
+        noneHoursRadioButton.setToggleGroup(hoursPerDayToggleGroup);
+        hoursPerDayOptionsHBox.getChildren().addAll(oneHourRadioButton, twoHoursRadioButton, threeHoursRadioButton, noneHoursRadioButton);
         hoursPerDayVBox.getChildren().addAll(hoursPerDayLabel, hoursPerDayOptionsHBox);
-        HBox.setHgrow(otherHoursTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
         Button submitButton = new Button("Enviar");
         submitButton.setStyle("-fx-background-color: #25FB54;");
@@ -177,7 +183,10 @@ public class Sport extends VBox {
         this.getChildren().addAll(titleLabel, personalInfoVBox, genderHBox, separator1, doYouExerciseLabel, exerciseOptionsHBox, sportVBox, daysPerWeekVBox, hoursPerDayVBox, submitButton, imgViewLogo);
 
         submitButton.setOnAction(e -> {
-            // Coloca aquí el código que deseas ejecutar al hacer clic en el botón "Enviar".
+            if (csvm.CheckSportsData(nameTextField, ageTextField, dniTextField, genderToggleGroup, exerciseToggleGroup, sportTextField, daysPerWeekToggleGroup, hoursPerDayToggleGroup))
+                csvm.CsvMaker("Food");
+            else
+                System.out.println("Debe rellenar los campos vacios.");
         });
     }
 }

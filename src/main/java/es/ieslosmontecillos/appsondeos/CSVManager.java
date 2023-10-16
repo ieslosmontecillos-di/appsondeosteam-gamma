@@ -94,6 +94,61 @@ public class CSVManager {
         return dataIsCorrect;
     }
 
+    //Travel check Method
+    boolean CheckTravelData(ToggleGroup tgFirstQue, ToggleGroup tgSecondQue, ToggleGroup tgThirdQues, ToggleGroup tgFourthQue, ArrayList<CheckBox> alFifthQues)
+    {
+        boolean dataIsCorrect = true;
+
+
+        //Check if obligatory field are filled
+        if (tgFirstQue.getSelectedToggle() == null ||
+                tgSecondQue.getSelectedToggle() == null ||
+                tgThirdQues.getSelectedToggle() == null ||
+                tgFourthQue.getSelectedToggle() == null) {
+            dataIsCorrect = false;
+        } else {
+            //Make the data into it's attribute
+            this.data = ((RadioButton)tgFirstQue.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)tgSecondQue.getSelectedToggle()).getText()  + ";"
+                    + ((RadioButton)tgThirdQues.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)tgFourthQue.getSelectedToggle()).getText() + ";"
+                    + arrayToString(alFifthQues);
+        }
+
+        return dataIsCorrect;
+    }
+
+    //Sports check Method
+    boolean CheckSportsData(TextField nameTextField, TextField ageTextField, TextField dniTextField, ToggleGroup genderToggleGroup,
+                            ToggleGroup exerciseToggleGroup, TextField sportTextField, ToggleGroup daysPerWeekToggleGroup, ToggleGroup hoursPerDayToggleGroup)
+    {
+        boolean dataIsCorrect = true;
+
+
+        //Check if obligatory field are filled
+        if (nameTextField.getText().isEmpty() ||
+                ageTextField.getText().isEmpty() ||
+                dniTextField.getText().isEmpty() ||
+                sportTextField.getText().isEmpty() ||
+                genderToggleGroup.getSelectedToggle() == null ||
+                exerciseToggleGroup.getSelectedToggle() == null ||
+                daysPerWeekToggleGroup.getSelectedToggle() == null ||
+                hoursPerDayToggleGroup.getSelectedToggle() == null) {
+            dataIsCorrect = false;
+        } else {
+            //Make the data into it's attribute
+            this.data = nameTextField.getText() + ";"
+                    + ageTextField.getText()  + ";"
+                    + dniTextField.getText() + ";"
+                    + ((RadioButton)genderToggleGroup.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)exerciseToggleGroup.getSelectedToggle()).getText()  + ";"
+                    + sportTextField.getText() + ";"
+                    + ((RadioButton)daysPerWeekToggleGroup.getSelectedToggle()).getText() + ";"
+                    + ((RadioButton)hoursPerDayToggleGroup.getSelectedToggle()).getText();
+        }
+
+        return dataIsCorrect;
+    }
     //Convert an ArrayList<Checkbox> ino a String
     String arrayToString (ArrayList<CheckBox> arrayList){
         String string = "";

@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 public class Travel extends VBox {
 
@@ -60,6 +61,7 @@ public class Travel extends VBox {
     CheckBox cb3FifthQues;
     CheckBox cb4FifthQues;
     CheckBox cb5FifthQues;
+    ArrayList<CheckBox> alFifthQues = new ArrayList<>();
 
     //IMAGEN
     FileInputStream imginput;
@@ -69,6 +71,8 @@ public class Travel extends VBox {
     public Travel() throws FileNotFoundException {
         super();
         this.setSpacing(10);
+
+        CSVManager csvm = new CSVManager();
 
         //TITULO
         travelTittle = new Text("Viajes");
@@ -132,11 +136,11 @@ public class Travel extends VBox {
 
         tgThirdQues = new ToggleGroup();
 
-        rb1ThirdQues.setToggleGroup(tgFirstQue);
-        rb2ThirdQues.setToggleGroup(tgFirstQue);
-        rb3ThirdQues.setToggleGroup(tgFirstQue);
-        rb4ThirdQues.setToggleGroup(tgFirstQue);
-        rb5ThirdQues.setToggleGroup(tgFirstQue);
+        rb1ThirdQues.setToggleGroup(tgThirdQues);
+        rb2ThirdQues.setToggleGroup(tgThirdQues);
+        rb3ThirdQues.setToggleGroup(tgThirdQues);
+        rb4ThirdQues.setToggleGroup(tgThirdQues);
+        rb5ThirdQues.setToggleGroup(tgThirdQues);
 
         hbThirdQues.getChildren().addAll(rb1ThirdQues,rb2ThirdQues,rb3ThirdQues,rb4ThirdQues,rb5ThirdQues);
 
@@ -177,6 +181,12 @@ public class Travel extends VBox {
         cb4FifthQues = new CheckBox("Barco");
         cb5FifthQues = new CheckBox("Avion");
 
+        alFifthQues.add(cb1FifthQues);
+        alFifthQues.add(cb2FifthQues);
+        alFifthQues.add(cb3FifthQues);
+        alFifthQues.add(cb4FifthQues);
+        alFifthQues.add(cb5FifthQues);
+
         hbFifthQues.getChildren().addAll(cb1FifthQues,cb2FifthQues,cb3FifthQues,cb4FifthQues,cb5FifthQues);
 
         this.getChildren().addAll(lbFifthQues,hbFifthQues);
@@ -194,6 +204,14 @@ public class Travel extends VBox {
         imgViewLogo.setFitWidth(430);
 
         this.getChildren().add(imgViewLogo);
+
+
+        btnCheckNmake.setOnAction(e -> {
+            if (csvm.CheckTravelData(tgFirstQue, tgSecondQue, tgThirdQues, tgFourthQue, alFifthQues))
+                csvm.CsvMaker("Travel");
+            else
+                System.out.println("Debe rellenar los campos vacios.");
+        });
     }
 
 }

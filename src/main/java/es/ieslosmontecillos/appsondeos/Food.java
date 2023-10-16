@@ -164,13 +164,13 @@ public class Food extends VBox {
             hbFifthQue.getChildren().addAll(rbFifthQueYes, rbFifthQueNo);
         this.getChildren().addAll(lbFifthQue, hbFifthQue);
 
+
+        this.getChildren().add(imgViewLogo);
+
         //Provisional Button to make the CSV
         Button btnCheckNmake = new Button("Enviar");
         btnCheckNmake.setStyle("-fx-background-color: #25FB54;");
         this.getChildren().add(btnCheckNmake);
-
-        this.getChildren().add(imgViewLogo);
-
 
         //Try to make the CSV
         btnCheckNmake.setOnAction(e -> {
