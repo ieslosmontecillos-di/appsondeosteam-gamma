@@ -1,5 +1,7 @@
 package es.ieslosmontecillos.appsondeos;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -13,6 +15,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.function.UnaryOperator;
 
 public class Sport extends VBox {
 
@@ -98,9 +101,33 @@ public class Sport extends VBox {
         ageLabel = new Label("Edad:");
         ageTextField = new TextField();
 
+        //Controla que solo se pueda escribir numeros en el campo edad
+        String formatoEdad = "[0-9]*";
+
+        ageTextField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches(formatoEdad)) ? change : null));
+
 
         dniLabel = new Label("DNI/NIF:");
         dniTextField = new TextField();
+
+        //controla que el formato del DNI sea de 8 numeros y una letra mayuscula
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("[0-9]{0,8}[A-Z]?"))
+            {
+                return change;
+            }
+            else
+            {
+                return null;
+            }
+        };
+
+        // Crear un TextFormatter con el filtro
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+        dniTextField.setTextFormatter(textFormatter);
+
         ageHBox.getChildren().addAll(ageLabel, ageTextField, dniLabel, dniTextField);
         HBox.setHgrow(ageTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
         HBox.setHgrow(dniTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
@@ -129,6 +156,21 @@ public class Sport extends VBox {
         ToggleGroup exerciseToggleGroup = new ToggleGroup();
         yesRadioButton.setToggleGroup(exerciseToggleGroup);
         noRadioButton.setToggleGroup(exerciseToggleGroup);
+
+
+        exerciseToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == noRadioButton) {
+                    sportTextField.setDisable(true);
+                } else {
+                    sportTextField.setDisable(false);
+                }
+            }
+        });
+
+
+
         exerciseOptionsHBox.getChildren().addAll(yesRadioButton, noRadioButton);
 
         // ¿Qué deporte practicas?

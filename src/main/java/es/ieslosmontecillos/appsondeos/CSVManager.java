@@ -129,7 +129,8 @@ public class CSVManager {
         if (nameTextField.getText().isEmpty() ||
                 ageTextField.getText().isEmpty() ||
                 dniTextField.getText().isEmpty() ||
-                sportTextField.getText().isEmpty() ||
+                //comprueba que el textfield no este deshabilitado y su texto vacio
+                (!sportTextField.isDisabled() && sportTextField.getText().isEmpty()) ||
                 genderToggleGroup.getSelectedToggle() == null ||
                 exerciseToggleGroup.getSelectedToggle() == null ||
                 daysPerWeekToggleGroup.getSelectedToggle() == null ||

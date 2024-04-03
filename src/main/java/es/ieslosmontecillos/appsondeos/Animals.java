@@ -1,5 +1,7 @@
 package es.ieslosmontecillos.appsondeos;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -87,6 +89,58 @@ public class Animals extends VBox {
         tgFirstQue = new ToggleGroup();
         rbFirstQueYes.setToggleGroup(tgFirstQue);
         rbFirstQueNo.setToggleGroup(tgFirstQue);
+
+        tgFirstQue.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+                if (newValue == rbFirstQueNo) {
+
+                    // Deshabilitar todos los elementos
+                    tgSecondQue.getToggles().forEach(toggle -> {
+                        RadioButton radioButton = (RadioButton) toggle;
+                        radioButton.setDisable(true);
+                    });
+
+                    for (CheckBox checkBox : alThirdQue) {
+                        checkBox.setDisable(true);}
+
+                    for (CheckBox checkBox : alForthQue) {
+                        checkBox.setDisable(true);}
+
+                    tfForthQueOther.setDisable(true);
+
+                    for (CheckBox checkBox : alFifthhQue) {
+                        checkBox.setDisable(true);}
+
+                    tfFifthQueOther.setDisable(true);
+
+                } else {
+
+                    // Habilitar todos los elementos
+                    tgSecondQue.getToggles().forEach(toggle -> {
+                        RadioButton radioButton = (RadioButton) toggle;
+                        radioButton.setDisable(false);
+                    });
+
+                    for (CheckBox checkBox : alThirdQue) {
+                        checkBox.setDisable(false);
+                    }
+
+                    for (CheckBox checkBox : alForthQue) {
+                        checkBox.setDisable(false);
+                    }
+
+                    tfForthQueOther.setDisable(false);
+
+                    for (CheckBox checkBox : alFifthhQue) {
+                        checkBox.setDisable(false);
+                    }
+
+                    tfFifthQueOther.setDisable(false);
+
+                }
+            }
+        });
 
         //Second Question elements
         lbSecondQue = new Label("¿De cuantas mascotas dispones?");
