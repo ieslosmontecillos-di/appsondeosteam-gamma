@@ -7,6 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
@@ -95,6 +97,8 @@ public class Sport extends VBox {
         ageHBox = new HBox(10);
         ageLabel = new Label("Edad:");
         ageTextField = new TextField();
+
+
         dniLabel = new Label("DNI/NIF:");
         dniTextField = new TextField();
         ageHBox.getChildren().addAll(ageLabel, ageTextField, dniLabel, dniTextField);
@@ -131,6 +135,9 @@ public class Sport extends VBox {
         sportVBox = new VBox(10);
         sportLabel = new Label("¿Qué deporte practicas?");
         sportTextField = new TextField();
+
+        //exerciseToggleGroup.selectedToggleProperty().addListener(obs);
+
         sportVBox.getChildren().addAll(sportLabel, sportTextField);
         VBox.setVgrow(sportTextField, Priority.ALWAYS); // Hacer que el campo de entrada ocupe todo el ancho
 
@@ -169,6 +176,10 @@ public class Sport extends VBox {
         Button submitButton = new Button("Enviar");
         submitButton.setStyle("-fx-background-color: #25FB54;");
 
+        //Texto de confirmacion
+        Text texto = new Text();
+        texto.setFont(new Font(20));
+
         HBox imageContainer = new HBox();
         imageContainer.setAlignment(Pos.CENTER);
 
@@ -180,13 +191,18 @@ public class Sport extends VBox {
 
         imageContainer.getChildren().add(imgViewLogo);
 
-        this.getChildren().addAll(titleLabel, personalInfoVBox, genderHBox, separator1, doYouExerciseLabel, exerciseOptionsHBox, sportVBox, daysPerWeekVBox, hoursPerDayVBox, submitButton, imgViewLogo);
+        this.getChildren().addAll(titleLabel, personalInfoVBox, genderHBox, separator1, doYouExerciseLabel, exerciseOptionsHBox, sportVBox, daysPerWeekVBox, hoursPerDayVBox, submitButton,texto, imgViewLogo);
 
         submitButton.setOnAction(e -> {
-            if (csvm.CheckSportsData(nameTextField, ageTextField, dniTextField, genderToggleGroup, exerciseToggleGroup, sportTextField, daysPerWeekToggleGroup, hoursPerDayToggleGroup))
-                csvm.CsvMaker("Food");
-            else
-                System.out.println("Debe rellenar los campos vacios.");
+            if (csvm.CheckSportsData(nameTextField, ageTextField, dniTextField, genderToggleGroup, exerciseToggleGroup, sportTextField, daysPerWeekToggleGroup, hoursPerDayToggleGroup)) {
+                csvm.CsvMaker("Sport");
+                texto.setText("Encuesta enviada con exito");
+                texto.setFill(Color.GREEN);
+            }
+            else {
+                texto.setText("Debe rellenar los campos vacios.");
+                texto.setFill(Color.RED);
+            }
         });
     }
 }

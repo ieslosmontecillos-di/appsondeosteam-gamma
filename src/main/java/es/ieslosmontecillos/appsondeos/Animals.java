@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
@@ -177,15 +179,26 @@ public class Animals extends VBox {
         btnCheckNmake.setStyle("-fx-background-color: #25FB54;");
         this.getChildren().add(btnCheckNmake);
 
+        //Texto de confirmacion
+        Text texto = new Text();
+        texto.setFont(new Font(20));
+
+        this.getChildren().add(texto);
+
         this.getChildren().add(imgViewLogo);
 
 
         //Try to make the CSV
         btnCheckNmake.setOnAction(e -> {
-            if (csvm.CheckAnimalsData(tgFirstQue, tgSecondQue, alThirdQue, alForthQue, tfForthQueOther, alFifthhQue, tfFifthQueOther))
+            if (csvm.CheckAnimalsData(tgFirstQue, tgSecondQue, alThirdQue, alForthQue, tfForthQueOther, alFifthhQue, tfFifthQueOther)) {
                 csvm.CsvMaker("Animals");
-            else
-                System.out.println("Debe rellenar los campos vacios.");
+                texto.setText("Encuesta enviada con exito");
+                texto.setFill(Color.GREEN);
+            }
+            else {
+                texto.setText("Debe rellenar los campos vacios.");
+                texto.setFill(Color.RED);
+            }
         });
 
     }

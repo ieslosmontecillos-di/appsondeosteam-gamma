@@ -149,7 +149,7 @@ public class CSVManager {
 
         return dataIsCorrect;
     }
-    //Convert an ArrayList<Checkbox> ino a String
+    //Convert an ArrayList<Checkbox> into a String
     String arrayToString (ArrayList<CheckBox> arrayList){
         String string = "";
 

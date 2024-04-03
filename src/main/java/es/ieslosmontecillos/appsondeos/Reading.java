@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
@@ -186,6 +188,12 @@ public class Reading extends VBox{
         btnCheckNmake.setStyle("-fx-background-color: #25FB54;");
         this.getChildren().add(btnCheckNmake);
 
+        //Texto de confirmacion
+        Text texto = new Text();
+        texto.setFont(new Font(20));
+
+        this.getChildren().add(texto);
+
         //IMAGEN
         imginput = new FileInputStream("src/main/resources/assets/images/books.jpg");
         imglogo = new Image(imginput);
@@ -194,10 +202,15 @@ public class Reading extends VBox{
         imgViewLogo.setFitWidth(430);
 
         btnCheckNmake.setOnAction(e -> {
-            if (csvm.CheckReadingData(tgFirstQue, tgSecondQue, alThirdQue, tgFourthQue, tgFifthQues))
+            if (csvm.CheckReadingData(tgFirstQue, tgSecondQue, alThirdQue, tgFourthQue, tgFifthQues)) {
                 csvm.CsvMaker("Reading");
-            else
-                System.out.println("Debe rellenar los campos vacios.");
+                texto.setText("Encuesta enviada con exito");
+                texto.setFill(Color.GREEN);
+            }
+            else {
+                texto.setText("Debe rellenar los campos vacios.");
+                texto.setFill(Color.RED);
+            }
         });
 
         this.getChildren().add(imgViewLogo);
